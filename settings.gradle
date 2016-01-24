@@ -1,1 +1,1 @@
-include ':sample', ':transparenttexttextview'
+include ':sample', ':transparent-text-textview'

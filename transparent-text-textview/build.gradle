@@ -1,0 +1,63 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+    }
+}
+
+ext {
+    libVersion = '0.1'
+    libVersionCode = 1
+    libDescription = 'First version'
+
+    libGroupId = 'it.gilvegliach.android'
+    libName = 'transparent-text-textview'
+    libGitHubUrl = 'https://github.com/gilvegliach/TransparentTextTextView.git'
+}
+
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 23
+        versionCode libVersionCode
+        versionName libVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = bintray_user
+    key = bintray_key
+    pkg {
+        repo = 'generic'
+        name = libName
+        licenses = ['Apache-2.0']
+        vcsUrl = libGitHubUrl
+    }
+    version {
+        name = libName
+        desc = libDescription
+        released = new Date()
+        vcsTag = libVersion
+    }
+    filesSpec {
+        from 'build/outputs/aar'
+        into '.'
+    }
+}
