@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/activity_bg">
 
-    <view
-        class="it.gilvegliach.blog.seethrough.MainActivity$SeeThroughTextView"
+    <it.gilvegliach.android.transparenttexttextview.TransparentTextTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/view_bg"
