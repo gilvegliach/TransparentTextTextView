@@ -6,22 +6,26 @@ technique is described in detail [here](http://gilvegliach.it/?id=3).
 
 Example
 -------
-(add image)
+<img src="/github/images/example.png" width="200">
 
 Usage
 ------
 In xml:
 
-    <it.gilvegliach.android.transparenttexttextview.TransparentTextTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/view_bg"
-        android:text="Hello World" />
+```java
+<it.gilvegliach.android.transparenttexttextview.TransparentTextTextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/view_bg"
+    android:text="Hello World" />
+```
 
 In code:
-    
-    TransparentTextTextView tv = new TransparentTextTextView(getContext());
-    tv.setText("Hello World");
+
+```java
+TransparentTextTextView tv = new TransparentTextTextView(getContext());
+tv.setText("Hello World");
+```
     
 Gradle
 ------
