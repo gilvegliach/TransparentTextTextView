@@ -4,17 +4,33 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath  'com.github.dcendents:android-maven-gradle-plugin:1.3'
     }
 }
 
 ext {
-    libVersion = '0.1'
-    libVersionCode = 1
-    libDescription = 'First version'
+    bintrayRepo = 'maven'
+    bintrayName = 'transparent-text-textview'
 
-    libGroupId = 'it.gilvegliach.android'
-    libName = 'transparent-text-textview'
-    libGitHubUrl = 'https://github.com/gilvegliach/TransparentTextTextView.git'
+    publishedGroupId = 'it.gilvegliach.android'
+    libraryName = 'transparent-text-textview'
+    artifact = 'transparent-text-textview'
+
+    libraryDescription = 'TextView with transparent text.'
+
+    siteUrl = 'https://github.com/gilvegliach/TransparentTextTextView'
+    gitUrl = 'https://github.com/gilvegliach/TransparentTextTextView.git'
+
+    libraryVersion = '1.0'
+    libraryVersionCode = 1
+
+    developerId = 'gil-vegliach'
+    developerName = 'Gil Vegliach'
+    developerEmail = 'gil.vegliach@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
 
@@ -27,8 +43,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 23
-        versionCode libVersionCode
-        versionName libVersion
+        versionCode libraryVersionCode
+        versionName libraryVersion
     }
     buildTypes {
         release {
@@ -38,26 +54,5 @@ android {
     }
 }
 
-
-apply plugin: 'com.jfrog.bintray'
-
-bintray {
-    user = bintray_user
-    key = bintray_key
-    pkg {
-        repo = 'generic'
-        name = libName
-        licenses = ['Apache-2.0']
-        vcsUrl = libGitHubUrl
-    }
-    version {
-        name = libName
-        desc = libDescription
-        released = new Date()
-        vcsTag = libVersion
-    }
-    filesSpec {
-        from 'build/outputs/aar'
-        into '.'
-    }
-}
+apply from: 'https://raw.githubusercontent.com/gilvegliach/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/gilvegliach/JCenter/master/bintrayv1.gradle'
