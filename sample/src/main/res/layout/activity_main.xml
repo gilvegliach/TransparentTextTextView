@@ -8,9 +8,10 @@
     <it.gilvegliach.android.transparenttexttextview.TransparentTextTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/view_bg"
-        android:text="Through"
-        android:textSize="48sp"
+        android:background="@color/accent"
+        android:text="TextView"
+        android:textStyle="bold"
+        android:textSize="60sp"
         android:padding="16dp"
         android:gravity="center"/>
 
