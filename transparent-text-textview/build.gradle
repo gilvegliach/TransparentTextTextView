@@ -39,6 +39,7 @@ ext {
 
     libraryVersion = '1.0.1'
     libraryVersionCode = 2
+    libraryPublish = true
 
     developerId = 'gil-vegliach'
     developerName = 'Gil Vegliach'
@@ -51,6 +52,7 @@ ext {
 
 
 apply plugin: 'com.android.library'
+apply from: 'android-jcenter.gradle'
 
 android {
     compileSdkVersion 23
@@ -70,5 +72,4 @@ android {
     }
 }
 
-apply from: 'https://raw.githubusercontent.com/gilvegliach/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/gilvegliach/JCenter/master/bintrayv1.gradle'
+
