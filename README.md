@@ -30,7 +30,7 @@ tv.setText("Hello World");
 Gradle
 ------
 ```groovy
-compile 'it.gilvegliach.android:transparent-text-textview:1.0'
+compile 'it.gilvegliach.android:transparent-text-textview:1.0.1'
 ```
 
 License
