@@ -41,7 +41,6 @@ public class TransparentTextTextView extends TextView {
     private Drawable mBackground;
     private Bitmap mBackgroundBitmap;
     private Canvas mBackgroundCanvas;
-    private boolean mSetBoundsOnSizeAvailable;
 
     public TransparentTextTextView(final Context context) {
         super(context);
@@ -63,18 +62,22 @@ public class TransparentTextTextView extends TextView {
     @Override
     @Deprecated
     public void setBackgroundDrawable(final Drawable bg) {
-        mBackground = bg;
-
-        int w = getWidth();
-        int h = getHeight();
-
-        // Layout has not run
-        if (w == 0 || h == 0) {
-            mSetBoundsOnSizeAvailable = true;
+        if (mBackground == bg) {
             return;
         }
 
-        mBackground.setBounds(0, 0, w, h);
+        mBackground = bg;
+
+        // Will always draw drawable using view bounds. This might be a
+        // problem if the drawable should force the view to be bigger, e.g.
+        // the view sets its dimensions to wrap_content and the drawable
+        // is larger than the text.
+        int w = getWidth();
+        int h = getHeight();
+        if (mBackground != null && w != 0 && h != 0) {
+            mBackground.setBounds(0, 0, w, h);
+        }
+        requestLayout();
         invalidate();
     }
 
@@ -90,24 +93,19 @@ public class TransparentTextTextView extends TextView {
         mBackgroundCanvas = new Canvas(mBackgroundBitmap);
         mMaskBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mMaskCanvas = new Canvas(mMaskBitmap);
-
-        if (mSetBoundsOnSizeAvailable) {
+        if (mBackground != null) {
             mBackground.setBounds(0, 0, w, h);
-            mSetBoundsOnSizeAvailable = false;
         }
     }
 
     @Override
     protected void onDraw(final Canvas canvas) {
+        // Nothing to draw
+        if (mBackground == null) return;
+
         drawMask();
         drawBackground();
         canvas.drawBitmap(mBackgroundBitmap, 0.f, 0.f, null);
-    }
-
-    private void drawBackground() {
-        clear(mBackgroundCanvas);
-        mBackground.draw(mBackgroundCanvas);
-        mBackgroundCanvas.drawBitmap(mMaskBitmap, 0.f, 0.f, mPaint);
     }
 
     // draw() calls onDraw() leading to stack overflow
@@ -115,6 +113,12 @@ public class TransparentTextTextView extends TextView {
     private void drawMask() {
         clear(mMaskCanvas);
         super.onDraw(mMaskCanvas);
+    }
+
+    private void drawBackground() {
+        clear(mBackgroundCanvas);
+        mBackground.draw(mBackgroundCanvas);
+        mBackgroundCanvas.drawBitmap(mMaskBitmap, 0.f, 0.f, mPaint);
     }
 
     private static void clear(Canvas canvas) {
