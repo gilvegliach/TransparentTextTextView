@@ -50,9 +50,7 @@ ext {
     allLicenses = ["Apache-2.0"]
 }
 
-
 apply plugin: 'com.android.library'
-apply from: 'android-jcenter.gradle'
 
 android {
     compileSdkVersion 23
@@ -72,4 +70,6 @@ android {
     }
 }
 
-
+// Must be after the android block or the build will be broken
+// See: https://github.com/gilvegliach/TransparentTextTextView/issues/2
+apply from: 'android-jcenter.gradle'
