@@ -105,6 +105,7 @@ public class TransparentTextTextView extends TextView {
     }
 
     private void drawBackground() {
+        clear(mBackgroundCanvas);
         mBackground.draw(mBackgroundCanvas);
         mBackgroundCanvas.drawBitmap(mMaskBitmap, 0.f, 0.f, mPaint);
     }
@@ -112,7 +113,11 @@ public class TransparentTextTextView extends TextView {
     // draw() calls onDraw() leading to stack overflow
     @SuppressLint("WrongCall")
     private void drawMask() {
-        mMaskCanvas.drawColor(Color.BLACK, PorterDuff.Mode.CLEAR);
+        clear(mMaskCanvas);
         super.onDraw(mMaskCanvas);
+    }
+
+    private static void clear(Canvas canvas) {
+        canvas.drawColor(Color.BLACK, PorterDuff.Mode.CLEAR);
     }
 }
