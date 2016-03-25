@@ -37,8 +37,8 @@ ext {
     siteUrl = 'https://github.com/gilvegliach/TransparentTextTextView'
     gitUrl = 'https://github.com/gilvegliach/TransparentTextTextView.git'
 
-    libraryVersion = '1.0.1'
-    libraryVersionCode = 2
+    libraryVersion = '1.0.2'
+    libraryVersionCode = 3
     libraryPublish = true
 
     developerId = 'gil-vegliach'
