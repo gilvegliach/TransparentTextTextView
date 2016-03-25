@@ -17,21 +17,16 @@
 package it.gilvegliach.android.transparenttexttextview;
 
 import android.annotation.SuppressLint;
-
 import android.content.Context;
-
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
-
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-
 import android.util.AttributeSet;
-
 import android.widget.TextView;
 
 public class TransparentTextTextView extends TextView {
@@ -123,5 +118,11 @@ public class TransparentTextTextView extends TextView {
 
     private static void clear(Canvas canvas) {
         canvas.drawColor(Color.BLACK, PorterDuff.Mode.CLEAR);
+    }
+
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        mSetBoundsOnSizeAvailable = true;
+        super.setText(text, type);
     }
 }
