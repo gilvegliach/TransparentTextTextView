@@ -24,6 +24,7 @@ In code:
 
 ```java
 TransparentTextTextView tv = new TransparentTextTextView(getContext());
+tv.setBackgroundResource(R.drawable.view_bg);
 tv.setText("Hello World");
 ```
     
