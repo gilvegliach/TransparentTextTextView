@@ -91,7 +91,7 @@ public class TransparentTextTextView extends TextView {
         super.onSizeChanged(w, h, oldw, oldh);
         mBackgroundBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         mBackgroundCanvas = new Canvas(mBackgroundBitmap);
-        mMaskBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mMaskBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8);
         mMaskCanvas = new Canvas(mMaskBitmap);
         if (mBackground != null) {
             mBackground.setBounds(0, 0, w, h);
