@@ -1,3 +1,5 @@
+<a href="http://www.methodscount.com/?lib=it.gilvegliach.android%3Atransparent-text-textview%3A1.0.2"><img src="https://img.shields.io/badge/Methods and size-32 | 5 KB-e91e63.svg"/></a>
+
 Transparent text TextView
 =========================
 This is a small library containing a `TextView` that renders its text as 
