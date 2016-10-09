@@ -1,4 +1,5 @@
-<a href="http://www.methodscount.com/?lib=it.gilvegliach.android%3Atransparent-text-textview%3A1.0.2"><img src="https://img.shields.io/badge/Methods and size-32 | 5 KB-e91e63.svg"/></a>
+[![Methods count][methods-count-img]][methods-count]
+[![Build status][build-status-img]][build-status]
 
 Transparent text TextView
 =========================
@@ -53,3 +54,7 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
+[build-status-img]: https://travis-ci.org/gilvegliach/TransparentTextTextView.svg?branch=master
+[build-status]: https://travis-ci.org/gilvegliach/TransparentTextTextView
+[methods-count-img]: https://img.shields.io/badge/Methods%20and%20size-32%20%7C%205%20KB-e91e63.svg
+[methods-count]: http://www.methodscount.com/?lib=it.gilvegliach.android%3Atransparent-text-textview%3A1.0.2
