@@ -89,25 +89,45 @@ public class TransparentTextTextView extends TextView {
     @Override
     protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        if (w > 0 && h > 0) {
-            mBackgroundBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-            mBackgroundCanvas = new Canvas(mBackgroundBitmap);
-            mMaskBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8);
-            mMaskCanvas = new Canvas(mMaskBitmap);
-            if (mBackground != null) {
-                mBackground.setBounds(0, 0, w, h);
-            }
+        if (w == 0 || h == 0) {
+            freeBitmaps();
+            return;
         }
+
+        createBitmaps(w, h);
+        if (mBackground != null) {
+            mBackground.setBounds(0, 0, w, h);
+        }
+    }
+
+    private void createBitmaps(int w, int h) {
+        mBackgroundBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        mBackgroundCanvas = new Canvas(mBackgroundBitmap);
+        mMaskBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ALPHA_8);
+        mMaskCanvas = new Canvas(mMaskBitmap);
+    }
+
+    private void freeBitmaps() {
+        mBackgroundBitmap = null;
+        mBackgroundCanvas = null;
+        mMaskBitmap = null;
+        mMaskCanvas = null;
     }
 
     @Override
     protected void onDraw(final Canvas canvas) {
-        // Nothing to draw
-        if (mBackground == null) return;
-
+        if (isNothingToDraw()) {
+            return;
+        }
         drawMask();
         drawBackground();
         canvas.drawBitmap(mBackgroundBitmap, 0.f, 0.f, null);
+    }
+
+    private boolean isNothingToDraw() {
+        return mBackground == null
+                || getWidth() == 0
+                || getHeight() == 0;
     }
 
     // draw() calls onDraw() leading to stack overflow
