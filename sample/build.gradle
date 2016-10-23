@@ -32,4 +32,5 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile project(':transparent-text-textview')
+    //compile 'it.gilvegliach.android:transparent-text-textview:1.0.3'
 }
