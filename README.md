@@ -56,5 +56,5 @@ License
 
 [build-status-img]: https://travis-ci.org/gilvegliach/TransparentTextTextView.svg?branch=master
 [build-status]: https://travis-ci.org/gilvegliach/TransparentTextTextView
-[methods-count-img]: https://img.shields.io/badge/Methods%20and%20size-32%20%7C%205%20KB-e91e63.svg
-[methods-count]: http://www.methodscount.com/?lib=it.gilvegliach.android%3Atransparent-text-textview%3A1.0.2
+[methods-count-img]: https://img.shields.io/badge/Methods%20and%20size-35%20%7C%205%20KB-e91e63.svg
+[methods-count]: http://www.methodscount.com/?lib=it.gilvegliach.android%3Atransparent-text-textview%3A1.0.3
