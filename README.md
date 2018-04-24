@@ -5,7 +5,8 @@ Transparent text TextView
 =========================
 This is a small library containing a `TextView` that renders its text as 
 transparent, so that you can see through and underneath the text. The
-technique is described in detail [here](http://gilvegliach.it/?id=3).
+technique is described in detail 
+[here](https://clevercoder.net/2017/08/01/library-draws-transparent-text-textview/).
 
 Example
 -------
